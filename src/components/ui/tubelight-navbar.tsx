@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useEffect, useState } from "react"
-import { motion } from "framer-motion"
+import { motion } from "motion/react"
 import { Link, useLocation } from "react-router-dom"
 import { LucideIcon } from "lucide-react"
 import { cn } from "../../lib/utils"
@@ -49,66 +49,94 @@ export function NavBar({ items, className }: NavBarProps) {
   return (
     <div
       className={cn(
-        "fixed bottom-0 sm:top-0 left-1/2 -translate-x-1/2 z-50 mb-6 sm:pt-6 w-full px-4 pointer-events-none",
+        "fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-50 transition-all duration-300 border border-white/10 rounded-full overflow-hidden shadow-2xl",
         className,
       )}
+      style={{ 
+        backgroundImage: 'url(/bg.svg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+        backdropFilter: 'blur(10px)'
+      }}
     >
-      <div className="flex items-center justify-center gap-1 sm:gap-2 bg-black/20 border border-white/10 backdrop-blur-lg py-1 px-1 rounded-full shadow-lg mx-auto w-fit pointer-events-auto">
-        {items.map((item) => {
-          const Icon = item.icon
-          const isActive = activeTab === item.name
+      <div className="px-4 sm:px-6 lg:px-8 h-12 md:h-14 flex items-center relative">
+        <Link to="/" className="flex items-center gap-2 shrink-0 absolute left-4 sm:left-6 lg:left-8">
+          <img src="/Logo_transparent.svg" alt="Riadi Logo" className="h-6 md:h-8 w-auto" />
+        </Link>
 
-          return (
-            <Link
-              key={item.name}
-              to={item.url}
-              onClick={(e) => {
-                setActiveTab(item.name);
-                if (item.url.startsWith('/#') && location.pathname === '/') {
-                  const id = item.url.replace('/#', '');
-                  const element = document.getElementById(id);
-                  if (element) {
+        <div className="flex items-center gap-1 sm:gap-2 mx-auto">
+          {items.map((item) => {
+            const Icon = item.icon
+            const isActive = activeTab === item.name
+
+            return (
+              <Link
+                key={item.name}
+                to={item.url}
+                onClick={(e) => {
+                  setActiveTab(item.name);
+                  if (item.url.startsWith('/#') && location.pathname === '/') {
+                    const id = item.url.replace('/#', '');
+                    const element = document.getElementById(id);
+                    if (element) {
+                      e.preventDefault();
+                      element.scrollIntoView({ behavior: 'smooth' });
+                      window.history.pushState(null, '', item.url);
+                    }
+                  } else if (item.url === '/' && location.pathname === '/') {
                     e.preventDefault();
-                    element.scrollIntoView({ behavior: 'smooth' });
-                    window.history.pushState(null, '', item.url);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    window.history.pushState(null, '', '/');
                   }
-                } else if (item.url === '/' && location.pathname === '/') {
-                  e.preventDefault();
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                  window.history.pushState(null, '', '/');
-                }
-              }}
-              className={cn(
-                "relative cursor-pointer text-sm font-semibold px-4 py-2 rounded-full transition-colors shrink-0",
-                "text-white/80 hover:text-white",
-                isActive && "bg-white/10 text-white",
-              )}
-            >
-              <span className="hidden md:inline whitespace-nowrap">{item.name}</span>
-              <span className="md:hidden">
-                <Icon size={18} strokeWidth={2.5} />
-              </span>
-              {isActive && (
-                <motion.div
-                  layoutId="lamp"
-                  className="absolute inset-0 w-full bg-primary/5 rounded-full -z-10"
-                  initial={false}
-                  transition={{
-                    type: "spring",
-                    stiffness: 300,
-                    damping: 30,
-                  }}
-                >
-                  <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-1 bg-gradient-to-r from-primary to-secondary rounded-t-full">
-                    <div className="absolute w-12 h-6 bg-primary/20 rounded-full blur-md -top-2 -left-2" />
-                    <div className="absolute w-8 h-6 bg-secondary/20 rounded-full blur-md -top-1" />
-                    <div className="absolute w-4 h-4 bg-primary/20 rounded-full blur-sm top-0 left-2" />
-                  </div>
-                </motion.div>
-              )}
-            </Link>
-          )
-        })}
+                }}
+                className={cn(
+                  "relative cursor-pointer text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1.5 rounded-full transition-colors shrink-0 uppercase tracking-wider",
+                  "text-primary hover:text-primary/80",
+                  isActive && "text-secondary",
+                )}
+              >
+                <span className="hidden md:inline whitespace-nowrap">{item.name}</span>
+                <span className="md:hidden">
+                  <Icon size={14} strokeWidth={2.5} />
+                </span>
+                {isActive && (
+                  <motion.div
+                    layoutId="lamp"
+                    className="absolute inset-0 w-full bg-secondary/10 rounded-full -z-10"
+                    initial={false}
+                    transition={{
+                      type: "spring",
+                      stiffness: 300,
+                      damping: 30,
+                    }}
+                  >
+                    <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-8 h-1 bg-gradient-to-r from-secondary to-primary rounded-t-full">
+                      <div className="absolute w-12 h-6 bg-secondary/20 rounded-full blur-md -top-2 -left-2" />
+                    </div>
+                  </motion.div>
+                )}
+              </Link>
+            )
+          })}
+        </div>
+
+        <div className="absolute right-4 sm:right-6 lg:right-8">
+          <a 
+            href="#partner-section" 
+            onClick={(e) => {
+              e.preventDefault();
+              const element = document.getElementById('partner-section');
+              if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+                window.history.pushState(null, '', '#partner-section');
+              }
+            }}
+            className="bg-secondary hover:bg-secondary/90 text-white text-[10px] md:text-xs font-bold px-3 md:px-4 py-1.5 md:py-2 rounded-full transition-all duration-300 shadow-lg shadow-secondary/20 uppercase tracking-wider"
+          >
+            Host
+          </a>
+        </div>
       </div>
     </div>
   )

@@ -17,8 +17,8 @@ import { Home as HomeIcon, Info, HelpCircle, Mail } from 'lucide-react';
 const navItems = [
   { name: 'Home', url: '/', icon: HomeIcon },
   { name: 'About', url: '/#about', icon: Info },
-  { name: 'How it Works', url: '/how-it-works', icon: HelpCircle },
-  { name: 'Contact', url: '/contact', icon: Mail }
+  { name: 'Contact', url: '/#contact-section', icon: Mail },
+  { name: 'How it Works', url: '/how-it-works', icon: HelpCircle }
 ];
 
 export default function App() {

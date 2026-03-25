@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { MoveRight, Apple, Play } from "lucide-react";
 import { Button } from "./button";
 import { Link } from "react-router-dom";
@@ -28,12 +28,12 @@ function Hero() {
       <div className="container mx-auto px-6 md:px-12 lg:px-24">
         <div className="flex gap-8 py-20 lg:py-40 items-center justify-center flex-col">
           <div className="flex gap-4 flex-col items-center">
-            <svg viewBox="0 0 130 40" className="h-12 md:h-16 w-auto mb-2 drop-shadow-2xl" xmlns="http://www.w3.org/2000/svg">
-              <g transform="skewX(-15) translate(15, 0)">
-                <text x="0" y="32" fontFamily="Arial, Helvetica, sans-serif" fontWeight="900" fontSize="36" fill="#ffffff" letterSpacing="-2">RIADI</text>
-                <path d="M 31 9 L 36 4 L 41 9 L 36 14 Z" fill="#B84C41"/>
-              </g>
-            </svg>
+            {/* 
+              HOW TO USE YOUR UPLOADED LOGO:
+              1. Upload your image (e.g., "logo.png") to the "public" folder using the file explorer on the left.
+              2. Uncomment the <img> tag below and change "/logo.png" to your file's name.
+              3. Delete the <svg> block below it.
+            */}
             <h1 className="text-5xl md:text-7xl max-w-2xl tracking-tighter text-center font-regular text-white drop-shadow-2xl">
               <span className="text-white">The Future of Sports</span>
               <span className="relative flex w-full justify-center overflow-hidden text-center md:pb-4 md:pt-1 text-secondary">
@@ -75,49 +75,63 @@ function Hero() {
                 <span>Thank you for subscribing! We will keep you updated.</span>
               </div>
             ) : (
-              <form 
-                className="flex w-full max-w-md sm:max-w-none sm:w-auto items-center gap-1 sm:gap-2 bg-black/40 backdrop-blur-md border border-white/20 rounded-full p-1.5 shadow-lg pointer-events-auto relative z-50"
-                action="https://docs.google.com/forms/d/e/1FAIpQLScYDgPYlaN0WZBpwu3I0mZdPzD-ITAFdjiw3J8fQOeFglg7HA/formResponse"
-                method="POST"
-                onSubmit={async (e) => {
-                  e.preventDefault();
-                  const form = e.currentTarget;
-                  const formData = new FormData(form);
-                  const searchParams = new URLSearchParams();
-                  formData.forEach((value, key) => {
-                    searchParams.append(key, value.toString());
-                  });
-                  try {
-                    await fetch(form.action, {
-                      method: 'POST',
-                      mode: 'no-cors',
-                      headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                      },
-                      body: searchParams.toString()
-                    });
-                    setIsSubscribed(true);
-                    form.reset();
-                    setTimeout(() => setIsSubscribed(false), 5000);
-                  } catch (error) {
-                    console.error("Form submission error:", error);
-                    alert("Something went wrong. Please try again.");
-                  }
-                }}
-              >
-                <input 
-                  type="email" 
-                  name="entry.1445195837"
-                  placeholder="Enter email to know more about us..." 
-                  className="flex-1 min-w-0 sm:w-80 bg-transparent border-none text-white px-3 sm:px-4 py-2 focus:outline-none placeholder:text-white/50 pointer-events-auto text-sm sm:text-base"
-                  required
+              <div className="relative p-[2px] rounded-full overflow-hidden group w-full max-w-md sm:max-w-none sm:w-auto">
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-primary"
+                  animate={{
+                    rotate: [0, 360],
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
                 />
-                <Button type="submit" className="rounded-full bg-primary text-white hover:bg-primary/90 px-4 sm:px-6 h-10 shrink-0 pointer-events-auto">
-                  Subscribe
-                </Button>
-              </form>
+                <form 
+                  className="flex w-full items-center gap-1 sm:gap-2 bg-black/90 backdrop-blur-md rounded-full p-1.5 shadow-lg pointer-events-auto relative z-10"
+                  action="https://docs.google.com/forms/d/e/1FAIpQLScYDgPYlaN0WZBpwu3I0mZdPzD-ITAFdjiw3J8fQOeFglg7HA/formResponse"
+                  method="POST"
+                  onSubmit={async (e) => {
+                    e.preventDefault();
+                    const form = e.currentTarget;
+                    const formData = new FormData(form);
+                    const searchParams = new URLSearchParams();
+                    formData.forEach((value, key) => {
+                      searchParams.append(key, value.toString());
+                    });
+                    try {
+                      await fetch(form.action, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: {
+                          'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body: searchParams.toString()
+                      });
+                      setIsSubscribed(true);
+                      form.reset();
+                      setTimeout(() => setIsSubscribed(false), 5000);
+                    } catch (error) {
+                      console.error("Form submission error:", error);
+                      alert("Something went wrong. Please try again.");
+                    }
+                  }}
+                >
+                  <input 
+                    type="email" 
+                    name="entry.1445195837"
+                    placeholder="Enter email to know more about us..." 
+                    className="flex-1 min-w-0 sm:w-80 bg-transparent border-none text-white px-3 sm:px-4 py-2 focus:outline-none placeholder:text-white/50 pointer-events-auto text-sm sm:text-base"
+                    required
+                  />
+                  <Button type="submit" className="rounded-full bg-primary text-white hover:bg-primary/90 px-4 sm:px-6 h-10 shrink-0 pointer-events-auto font-bold">
+                    Subscribe
+                  </Button>
+                </form>
+              </div>
             )}
           </div>
+
         </div>
       </div>
     </div>

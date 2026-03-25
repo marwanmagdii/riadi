@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
+import { NavBar2 } from '../components/ui/navbar2';
 import Footer from '../components/ui/footer';
 
 export default function TermsPage() {
@@ -10,26 +9,9 @@ export default function TermsPage() {
 
   return (
     <div className="min-h-screen bg-[#0A0E0C] text-white selection:bg-secondary selection:text-white relative">
-      {/* Simple Header */}
-      <nav className="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-black/20 backdrop-blur-md border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 h-20 flex justify-between items-center">
-          <Link to="/" className="flex items-center gap-2 text-white/70 hover:text-white transition-colors">
-            <ArrowLeft className="w-5 h-5" />
-            <span className="font-medium">Back to Home</span>
-          </Link>
-          <div className="flex items-center space-x-3">
-            <svg viewBox="0 0 130 40" className="h-8 w-auto" xmlns="http://www.w3.org/2000/svg">
-              <g transform="skewX(-15) translate(15, 0)">
-                <text x="0" y="32" fontFamily="Arial, Helvetica, sans-serif" fontWeight="900" fontSize="36" fill="#ffffff" letterSpacing="-2">RIADI</text>
-                <path d="M 31 9 L 36 4 L 41 9 L 36 14 Z" fill="#B84C41"/>
-              </g>
-            </svg>
-          </div>
-          <div className="w-24"></div> {/* Spacer for centering */}
-        </div>
-      </nav>
+      <NavBar2 />
 
-      <div className="pt-20">
+      <div className="pt-24 md:pt-32">
         <div className="max-w-4xl mx-auto px-6 py-12">
           <h1 className="text-4xl md:text-5xl font-bold mb-8 text-primary">Terms and Conditions</h1>
           <div className="prose prose-invert max-w-none text-white/80 space-y-6">

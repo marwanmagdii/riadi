@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Send, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Logo } from '../components/ui/logo';
 
 const districtsByCity: Record<string, string[]> = {
   "Cairo": ["15 May", "Al Azbakeyah", "Al Basatin", "Tebin", "El-Khalifa", "El darrasa", "Aldarb Alahmar", "Zawya al-Hamra", "El-Zaytoun", "Sahel", "El Salam", "Sayeda Zeinab", "El Sharabeya", "Shorouk", "El Daher", "Ataba", "New Cairo", "El Marg", "Ezbet el Nakhl", "Matareya", "Maadi", "Maasara", "Mokattam", "Manyal", "Mosky", "Nozha", "Waily", "Bab al-Shereia", "Bolaq", "Garden City", "Hadayek El-Kobba", "Helwan", "Dar Al Salam", "Shubra", "Tura", "Abdeen", "Abaseya", "Ain Shams", "Nasr City", "New Heliopolis", "Masr Al Qadima", "Mansheya Nasir", "Badr City", "Obour City", "Cairo Downtown", "Zamalek", "Kasr El Nile", "Rehab", "Katameya", "Madinty", "Rod Alfarag", "Sheraton", "El-Gamaleya", "10th of Ramadan City", "Helmeyat Alzaytoun", "New Nozha", "Capital New"],
@@ -114,12 +115,7 @@ export default function HostTournament() {
             <span className="font-medium">Back to Home</span>
           </Link>
           <div className="flex items-center space-x-3">
-            <svg viewBox="0 0 130 40" className="h-8 w-auto" xmlns="http://www.w3.org/2000/svg">
-              <g transform="skewX(-15) translate(15, 0)">
-                <text x="0" y="32" fontFamily="Arial, Helvetica, sans-serif" fontWeight="900" fontSize="36" fill="#ffffff" letterSpacing="-2">RIADI</text>
-                <path d="M 31 9 L 36 4 L 41 9 L 36 14 Z" fill="#B84C41"/>
-              </g>
-            </svg>
+            <Logo />
           </div>
           <div className="w-24"></div> {/* Spacer for centering */}
         </div>

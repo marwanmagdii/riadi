@@ -32,7 +32,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-24 px-6 md:px-12 lg:px-24 bg-[#050505] text-white border-t border-white/5 relative overflow-hidden">
+    <section id="contact-section" className="py-24 px-6 md:px-12 lg:px-24 bg-[#050505] text-white border-t border-white/5 relative overflow-hidden">
       {/* Background glow */}
       <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[100px] pointer-events-none"></div>
 
