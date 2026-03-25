@@ -296,12 +296,6 @@ const AntiGravityCanvas: React.FC = () => {
       onMouseLeave={handleMouseLeave}
     >
       <canvas ref={canvasRef} className="block w-full h-full" />
-      
-      {/* Debug Info Overlay (Hidden in production usually, but cool for tech demos) */}
-      <div className="absolute bottom-4 right-4 pointer-events-none text-xs text-white/20 font-mono text-right">
-        <p>{debugInfo.count} entities</p>
-        <p>{debugInfo.fps} FPS</p>
-      </div>
     </div>
   );
 };
@@ -316,12 +310,6 @@ export default function ParticleEffectForHero() {
     <div className="relative w-full h-screen bg-transparent overflow-hidden selection:bg-secondary selection:text-white">
       <AntiGravityCanvas />
       <Hero />
-      
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/30 animate-pulse pointer-events-none">
-         <span className="text-[10px] uppercase tracking-[0.2em]">Interact</span>
-         <MousePointer2 size={16} />
-      </div>
     </div>
   );
 }

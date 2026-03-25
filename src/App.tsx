@@ -8,6 +8,9 @@ import Home from "./pages/Home";
 import HostTournament from "./pages/HostTournament";
 import RegisterField from "./pages/RegisterField";
 import HowItWorksPage from "./pages/HowItWorksPage";
+import ContactPage from "./pages/ContactPage";
+import TermsPage from "./pages/TermsPage";
+import PolicyPage from "./pages/PolicyPage";
 import { NavBar } from "./components/ui/tubelight-navbar";
 import { Home as HomeIcon, Info, HelpCircle, Mail } from 'lucide-react';
 
@@ -15,7 +18,7 @@ const navItems = [
   { name: 'Home', url: '/', icon: HomeIcon },
   { name: 'About', url: '/#about', icon: Info },
   { name: 'How it Works', url: '/how-it-works', icon: HelpCircle },
-  { name: 'Contact', url: '/#contact', icon: Mail }
+  { name: 'Contact', url: '/contact', icon: Mail }
 ];
 
 export default function App() {
@@ -28,6 +31,9 @@ export default function App() {
           <Route path="/host-tournament" element={<HostTournament />} />
           <Route path="/register-field" element={<RegisterField />} />
           <Route path="/how-it-works" element={<HowItWorksPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/terms" element={<TermsPage />} />
+          <Route path="/policy" element={<PolicyPage />} />
         </Routes>
       </div>
     </Router>

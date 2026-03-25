@@ -20,13 +20,13 @@ export function PartnerSection() {
             <p className="text-lg text-white/60 leading-relaxed max-w-xl">
               Partner with Riadi to list your facility, manage bookings, or host your next big tournament. Reach thousands of passionate athletes looking to play and compete.
             </p>
-            <div className="pt-4 relative z-50 pointer-events-auto w-full max-w-full overflow-hidden">
-              <div className="flex overflow-x-auto pb-4 gap-4 snap-x [&::-webkit-scrollbar]:hidden">
-                <Link to="/register-field" className="snap-start shrink-0 w-[85%] sm:w-auto sm:flex-1 justify-center inline-flex bg-secondary hover:bg-secondary/90 text-white px-8 py-4 rounded-full font-bold tracking-wide transition-all duration-300 items-center gap-3 shadow-lg shadow-secondary/20 hover:shadow-secondary/40 hover:scale-105 active:scale-95">
+            <div className="pt-4 relative z-50 pointer-events-auto w-full max-w-full">
+              <div className="flex flex-col gap-4 w-full sm:w-fit">
+                <Link to="/register-field" className="w-full justify-center inline-flex bg-secondary hover:bg-secondary/90 text-white px-8 py-4 rounded-full font-bold tracking-wide transition-all duration-300 items-center gap-3 shadow-lg shadow-secondary/20 hover:shadow-secondary/40 hover:scale-105 active:scale-95">
                   <span>Register Your Field</span>
                   <ArrowRight className="w-5 h-5" />
                 </Link>
-                <Link to="/host-tournament" className="snap-start shrink-0 w-[85%] sm:w-auto sm:flex-1 justify-center inline-flex bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-full font-bold tracking-wide transition-all duration-300 items-center gap-3 shadow-lg shadow-primary/20 hover:shadow-primary/40 hover:scale-105 active:scale-95">
+                <Link to="/host-tournament" className="w-full justify-center inline-flex bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-full font-bold tracking-wide transition-all duration-300 items-center gap-3 shadow-lg shadow-primary/20 hover:shadow-primary/40 hover:scale-105 active:scale-95">
                   <span>Host Tournament</span>
                   <ArrowRight className="w-5 h-5" />
                 </Link>

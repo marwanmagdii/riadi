@@ -1,5 +1,36 @@
 @import "tailwindcss";
 
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes gradient-rotate {
+  from {
+    --gradient-angle: 0deg;
+  }
+  to {
+    --gradient-angle: 360deg;
+  }
+}
+
+.gradient-border-auto {
+  animation: gradient-rotate var(--animation-duration) linear infinite;
+}
+
+.gradient-border-hover:hover {
+  animation: gradient-rotate var(--animation-duration) linear infinite;
+}
+
+.gradient-border-stop-hover {
+  animation: gradient-rotate var(--animation-duration) linear infinite;
+}
+
+.gradient-border-stop-hover:hover {
+  animation-play-state: paused;
+}
+
 @theme {
   --color-primary: #1C3F29;
   --color-secondary: #B84C41;

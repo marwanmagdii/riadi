@@ -5,14 +5,24 @@ import {
   ChevronRight, Share2, Star, Heart, ChevronDown, 
   CheckCircle2, Calendar, BookOpen, User 
 } from 'lucide-react';
+import { BorderRotate } from './animated-gradient-border';
 
 const FeatureCard = ({ icon, title }: { icon: React.ReactNode, title: string }) => (
-  <div className="bg-[#111111] border border-white/5 p-6 rounded-2xl hover:bg-[#151515] transition-colors flex flex-col gap-4">
-    <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-primary">
-      {React.cloneElement(icon as React.ReactElement, { className: 'w-5 h-5' })}
+  <BorderRotate 
+    animationMode="rotate-on-hover" 
+    gradientColors={{ primary: 'rgba(28, 63, 41, 0.8)', secondary: 'rgba(184, 76, 65, 0.8)', accent: '#22c55e' }}
+    backgroundColor="#111111"
+    borderWidth={2}
+    borderRadius={16}
+    className="hover:-translate-y-1 transition-transform duration-300 h-full"
+  >
+    <div className="p-6 flex flex-col gap-4 h-full">
+      <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-primary">
+        {React.cloneElement(icon as React.ReactElement, { className: 'w-5 h-5' })}
+      </div>
+      <h4 className="font-bold text-white text-sm">{title}</h4>
     </div>
-    <h4 className="font-bold text-white text-sm">{title}</h4>
-  </div>
+  </BorderRotate>
 );
 
 export default function FeatureSection() {
@@ -57,9 +67,29 @@ export default function FeatureSection() {
                         <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div> Football
                       </span>
                     </div>
-                    <p className="text-gray-500 text-xs flex items-center gap-1 mt-1">
-                      <MapPin className="w-3 h-3" /> 123 korba st, Nasr City
-                    </p>
+                    <div className="flex items-center justify-between mt-1">
+                      <p className="text-gray-500 text-xs flex items-center gap-1">
+                        <MapPin className="w-3 h-3" /> 123 korba st, Nasr City
+                      </p>
+                      <button 
+                        onClick={() => {
+                          if (navigator.share) {
+                            navigator.share({
+                              title: 'Nasr City Stadium',
+                              text: 'Check out Nasr City Stadium on Riadi!',
+                              url: window.location.href,
+                            }).catch(console.error);
+                          } else {
+                            alert('Share link copied to clipboard!');
+                            navigator.clipboard.writeText(window.location.href);
+                          }
+                        }}
+                        className="text-gray-400 hover:text-black transition-colors flex items-center gap-1 text-[10px] font-medium"
+                        title="Share"
+                      >
+                        <Share2 className="w-3 h-3" /> Share
+                      </button>
+                    </div>
                   </div>
                   {/* Field Type */}
                   <div>

@@ -30,7 +30,7 @@ export default function HowItWorks() {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16 space-y-4">
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
-            Your Game, <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Simplified</span>
+            Your Game, <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary animate-pulse">Simplified</span>
           </h2>
           <p className="text-white/60 max-w-2xl mx-auto text-lg">
             Everything you need to play, compete, and manage in one seamless platform.

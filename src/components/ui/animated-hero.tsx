@@ -27,10 +27,16 @@ function Hero() {
     <div className="absolute inset-0 z-10 flex flex-col items-center justify-center pointer-events-none px-4">
       <div className="container mx-auto px-6 md:px-12 lg:px-24">
         <div className="flex gap-8 py-20 lg:py-40 items-center justify-center flex-col">
-          <div className="flex gap-4 flex-col">
+          <div className="flex gap-4 flex-col items-center">
+            <svg viewBox="0 0 130 40" className="h-12 md:h-16 w-auto mb-2 drop-shadow-2xl" xmlns="http://www.w3.org/2000/svg">
+              <g transform="skewX(-15) translate(15, 0)">
+                <text x="0" y="32" fontFamily="Arial, Helvetica, sans-serif" fontWeight="900" fontSize="36" fill="#ffffff" letterSpacing="-2">RIADI</text>
+                <path d="M 31 9 L 36 4 L 41 9 L 36 14 Z" fill="#B84C41"/>
+              </g>
+            </svg>
             <h1 className="text-5xl md:text-7xl max-w-2xl tracking-tighter text-center font-regular text-white drop-shadow-2xl">
               <span className="text-white">The Future of Sports</span>
-              <span className="relative flex w-full justify-center overflow-hidden text-center md:pb-4 md:pt-1 text-primary">
+              <span className="relative flex w-full justify-center overflow-hidden text-center md:pb-4 md:pt-1 text-secondary">
                 &nbsp;
                 {titles.map((title, index) => (
                   <motion.span
@@ -102,8 +108,8 @@ function Hero() {
                 <input 
                   type="email" 
                   name="entry.1445195837"
-                  placeholder="Enter your email..." 
-                  className="flex-1 min-w-0 sm:w-72 bg-transparent border-none text-white px-3 sm:px-4 py-2 focus:outline-none placeholder:text-white/50 pointer-events-auto"
+                  placeholder="Enter email to know more about us..." 
+                  className="flex-1 min-w-0 sm:w-80 bg-transparent border-none text-white px-3 sm:px-4 py-2 focus:outline-none placeholder:text-white/50 pointer-events-auto text-sm sm:text-base"
                   required
                 />
                 <Button type="submit" className="rounded-full bg-primary text-white hover:bg-primary/90 px-4 sm:px-6 h-10 shrink-0 pointer-events-auto">

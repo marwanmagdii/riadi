@@ -5,7 +5,7 @@ export default function AboutUs() {
     <section id="about" className="relative w-full bg-[#0A0E0C] text-white py-24 px-6 md:px-12 lg:px-24 overflow-hidden border-t border-white/5">
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h4 className="text-sm font-bold tracking-[0.2em] text-primary uppercase mb-3">About Us</h4>
+          <h4 className="text-lg md:text-xl font-bold tracking-[0.2em] text-secondary uppercase mb-3">About Us</h4>
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">Empowering the Sports Community</h2>
           <p className="text-lg text-white/60 leading-relaxed">
             Riadi is more than just a booking platform. We are building the ultimate ecosystem for sports enthusiasts, facility owners, and tournament organizers. Our mission is to make sports accessible, organized, and community-driven.
