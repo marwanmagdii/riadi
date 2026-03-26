@@ -22,7 +22,7 @@ export default function Footer() {
           <Link to="/policy" className="hover:text-primary/80 transition-colors">Privacy Policy</Link>
         </div>
 
-        <p className="text-primary text-sm font-bold opacity-90">
+        <p className="text-primary text-sm font-light opacity-70 tracking-wide">
           © {new Date().getFullYear()} Riadi Sports. All rights reserved.
         </p>
       </div>
