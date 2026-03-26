@@ -6,6 +6,7 @@ import { Link, useLocation } from "react-router-dom"
 import { LucideIcon } from "lucide-react"
 import { cn } from "../../lib/utils"
 import { Logo } from "./logo"
+import bgImage from "../../assets/bg.png"
 
 interface NavItem {
   name: string
@@ -54,7 +55,7 @@ export function NavBar({ items, className }: NavBarProps) {
         className,
       )}
       style={{ 
-        backgroundImage: `url(/bg.png)`,
+        backgroundImage: `url(${bgImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundColor: 'rgba(0, 0, 0, 0.8)',

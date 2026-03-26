@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { Logo } from './logo';
+import bgImage from '../../assets/bg.png';
 
 export function NavBar2({ className }: { className?: string }) {
   return (
@@ -12,7 +13,7 @@ export function NavBar2({ className }: { className?: string }) {
         className,
       )}
       style={{ 
-        backgroundImage: `url(/bg.png)`,
+        backgroundImage: `url(${bgImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundColor: 'rgba(0, 0, 0, 0.8)',
@@ -29,11 +30,9 @@ export function NavBar2({ className }: { className?: string }) {
             Back to Home
           </span>
         </Link>
-        
         <div className="mx-auto">
           <Logo imgClassName="h-6 md:h-8" />
         </div>
-        
         <div className="hidden sm:block w-32 absolute right-4 sm:right-6 lg:right-8"></div>
       </div>
     </div>
