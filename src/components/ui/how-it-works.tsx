@@ -28,9 +28,9 @@ export default function HowItWorks() {
   return (
     <section id="how-it-works" className="py-24 px-6 md:px-12 lg:px-24 bg-[#0A0E0C] text-white border-t border-white/5">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="max-w-4xl mx-auto items-center">
           <div className="space-y-12">
-            <div className="text-left space-y-4">
+            <div className="text-center space-y-4">
               <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
                 Your Game, <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary animate-pulse">Simplified</span>
               </h2>
@@ -50,24 +50,6 @@ export default function HowItWorks() {
                 </div>
               ))}
             </div>
-          </div>
-
-          <div className="relative flex justify-center lg:justify-end">
-            {/* Phone Frame Mockup */}
-            <div className="relative w-[280px] h-[580px] bg-[#050505] rounded-[3rem] border-[8px] border-[#1A1A1A] shadow-2xl overflow-hidden">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-[#1A1A1A] rounded-b-2xl z-20"></div>
-              <img 
-                src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=800&q=80" 
-                alt="Riadi Player App" 
-                className="w-full h-full object-cover"
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
-            </div>
-            
-            {/* Decorative Elements */}
-            <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-primary/20 rounded-full blur-3xl pointer-events-none"></div>
-            <div className="absolute -top-10 -right-10 w-40 h-40 bg-secondary/20 rounded-full blur-3xl pointer-events-none"></div>
           </div>
         </div>
       </div>

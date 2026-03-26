@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { cn } from '../../lib/utils';
+import { Logo } from './logo';
 
 export function NavBar2({ className }: { className?: string }) {
   return (
@@ -11,7 +12,7 @@ export function NavBar2({ className }: { className?: string }) {
         className,
       )}
       style={{ 
-        backgroundImage: 'url(/src/images/bg.svg)',
+        backgroundImage: 'url(/bg.png)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundColor: 'rgba(0, 0, 0, 0.8)',
@@ -30,9 +31,7 @@ export function NavBar2({ className }: { className?: string }) {
         </Link>
         
         <div className="mx-auto">
-          <Link to="/" className="flex items-center gap-2 shrink-0">
-            <img src="/src/images/Logo_transparent.svg" alt="Riadi Logo" className="h-6 md:h-8 w-auto" />
-          </Link>
+          <Logo imgClassName="h-6 md:h-8" />
         </div>
         
         <div className="hidden sm:block w-32 absolute right-4 sm:right-6 lg:right-8"></div>

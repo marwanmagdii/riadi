@@ -287,9 +287,6 @@ const AntiGravityCanvas: React.FC = () => {
       ref={containerRef} 
       className="absolute inset-0 z-0 overflow-hidden"
       style={{
-        backgroundImage: "url('https://images.unsplash.com/photo-1518605368461-1e1e38ce8058?auto=format&fit=crop&w=2000&q=80')",
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
         cursor: "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' style='font-size: 24px;'><text y='24'>⚽</text></svg>\") 16 16, auto"
       }}
       onMouseMove={handleMouseMove}

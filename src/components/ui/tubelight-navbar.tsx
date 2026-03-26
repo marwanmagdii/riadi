@@ -5,6 +5,7 @@ import { motion } from "motion/react"
 import { Link, useLocation } from "react-router-dom"
 import { LucideIcon } from "lucide-react"
 import { cn } from "../../lib/utils"
+import { Logo } from "./logo"
 
 interface NavItem {
   name: string
@@ -53,7 +54,7 @@ export function NavBar({ items, className }: NavBarProps) {
         className,
       )}
       style={{ 
-        backgroundImage: 'url(/src/images/bg.svg)',
+        backgroundImage: 'url(/bg.png)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundColor: 'rgba(0, 0, 0, 0.8)',
@@ -61,9 +62,7 @@ export function NavBar({ items, className }: NavBarProps) {
       }}
     >
       <div className="px-4 sm:px-6 lg:px-8 h-12 md:h-14 flex items-center relative">
-        <Link to="/" className="flex items-center gap-2 shrink-0 absolute left-4 sm:left-6 lg:left-8">
-          <img src="/src/images/Logo_transparent.svg" alt="Riadi Logo" className="h-6 md:h-8 w-auto" />
-        </Link>
+        <Logo imgClassName="h-6 md:h-8" />
 
         <div className="flex items-center gap-1 sm:gap-2 mx-auto">
           {items.map((item) => {

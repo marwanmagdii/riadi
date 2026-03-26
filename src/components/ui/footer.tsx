@@ -7,7 +7,7 @@ export default function Footer() {
     <footer 
       className="border-t border-white/10 py-6 px-6 md:px-12 lg:px-24 text-center"
       style={{ 
-        backgroundImage: 'url(/src/images/bg.svg)',
+        backgroundImage: 'url(/bg.png)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundColor: '#050505'
@@ -22,7 +22,7 @@ export default function Footer() {
           <Link to="/policy" className="hover:text-primary/80 transition-colors">Privacy Policy</Link>
         </div>
 
-        <p className="text-primary text-[10px] opacity-70">
+        <p className="text-primary text-sm font-bold opacity-90">
           © {new Date().getFullYear()} Riadi Sports. All rights reserved.
         </p>
       </div>
