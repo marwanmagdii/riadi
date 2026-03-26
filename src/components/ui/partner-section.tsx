@@ -1,7 +1,6 @@
 import React from 'react';
 import { Building2, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import sportsFacilityImg from '../../assets/sports-facility.jpg';
 
 export function PartnerSection() {
   return (
@@ -38,7 +37,7 @@ export function PartnerSection() {
           <div className="flex-1 w-full max-w-md relative">
             <div className="absolute inset-0 bg-gradient-to-tr from-secondary/20 to-transparent rounded-3xl blur-2xl pointer-events-none"></div>
             <img 
-              src={sportsFacilityImg}
+              src="/sports-facility.jpg"
               alt="Sports Facility Management" 
               className="relative w-full h-auto rounded-3xl border border-white/10 shadow-2xl object-cover aspect-[4/3] pointer-events-none"
               referrerPolicy="no-referrer"
