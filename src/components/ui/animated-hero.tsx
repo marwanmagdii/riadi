@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import { MoveRight, Apple, Play } from "lucide-react";
 import { Button } from "./button";
 import { Link } from "react-router-dom";
+import { BorderRotate } from "./animated-gradient-border";
 
 function Hero() {
   const [titleNumber, setTitleNumber] = useState(0);
@@ -75,60 +76,59 @@ function Hero() {
                 <span>Thank you for subscribing! We will keep you updated.</span>
               </div>
             ) : (
-              <div className="relative p-[2px] rounded-full overflow-hidden group w-full max-w-md sm:max-w-none sm:w-auto">
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-primary"
-                  animate={{
-                    rotate: [0, 360],
-                  }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                />
-                <form 
-                  className="flex w-full items-center gap-1 sm:gap-2 bg-black/90 backdrop-blur-md rounded-full p-1.5 shadow-lg pointer-events-auto relative z-10"
-                  action="https://docs.google.com/forms/d/e/1FAIpQLScYDgPYlaN0WZBpwu3I0mZdPzD-ITAFdjiw3J8fQOeFglg7HA/formResponse"
-                  method="POST"
-                  onSubmit={async (e) => {
-                    e.preventDefault();
-                    const form = e.currentTarget;
-                    const formData = new FormData(form);
-                    const searchParams = new URLSearchParams();
-                    formData.forEach((value, key) => {
-                      searchParams.append(key, value.toString());
+            <BorderRotate 
+              animationMode="auto-rotate" 
+              gradientColors={{ 
+                primary: 'rgba(28, 63, 41, 0.8)', 
+                secondary: 'rgba(184, 76, 65, 0.8)'
+              }}
+              backgroundColor="rgba(0, 0, 0, 0.9)"
+              borderWidth={2}
+              borderRadius={9999}
+              className="w-full max-w-md sm:max-w-none sm:w-auto"
+            >
+              <form 
+                className="flex w-full items-center gap-1 sm:gap-2 rounded-full p-1.5 shadow-lg pointer-events-auto relative z-10"
+                action="https://docs.google.com/forms/d/e/1FAIpQLScYDgPYlaN0WZBpwu3I0mZdPzD-ITAFdjiw3J8fQOeFglg7HA/formResponse"
+                method="POST"
+                onSubmit={async (e) => {
+                  e.preventDefault();
+                  const form = e.currentTarget;
+                  const formData = new FormData(form);
+                  const searchParams = new URLSearchParams();
+                  formData.forEach((value, key) => {
+                    searchParams.append(key, value.toString());
+                  });
+                  try {
+                    await fetch(form.action, {
+                      method: 'POST',
+                      mode: 'no-cors',
+                      headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                      },
+                      body: searchParams.toString()
                     });
-                    try {
-                      await fetch(form.action, {
-                        method: 'POST',
-                        mode: 'no-cors',
-                        headers: {
-                          'Content-Type': 'application/x-www-form-urlencoded'
-                        },
-                        body: searchParams.toString()
-                      });
-                      setIsSubscribed(true);
-                      form.reset();
-                      setTimeout(() => setIsSubscribed(false), 5000);
-                    } catch (error) {
-                      console.error("Form submission error:", error);
-                      alert("Something went wrong. Please try again.");
-                    }
-                  }}
-                >
-                  <input 
-                    type="email" 
-                    name="entry.1445195837"
-                    placeholder="Enter email to know more about us..." 
-                    className="flex-1 min-w-0 sm:w-80 bg-transparent border-none text-white px-3 sm:px-4 py-2 focus:outline-none placeholder:text-white/50 pointer-events-auto text-sm sm:text-base"
-                    required
-                  />
-                  <Button type="submit" className="rounded-full bg-primary text-white hover:bg-primary/90 px-4 sm:px-6 h-10 shrink-0 pointer-events-auto font-bold">
-                    Subscribe
-                  </Button>
-                </form>
-              </div>
+                    setIsSubscribed(true);
+                    form.reset();
+                    setTimeout(() => setIsSubscribed(false), 5000);
+                  } catch (error) {
+                    console.error("Form submission error:", error);
+                    alert("Something went wrong. Please try again.");
+                  }
+                }}
+              >
+                <input 
+                  type="email" 
+                  name="entry.1445195837"
+                  placeholder="Enter email to know more about us..." 
+                  className="flex-1 min-w-0 sm:w-80 bg-transparent border-none text-white px-3 sm:px-4 py-2 focus:outline-none placeholder:text-white/50 pointer-events-auto text-sm sm:text-base"
+                  required
+                />
+                <Button type="submit" className="rounded-full bg-primary text-white hover:bg-primary/90 px-4 sm:px-6 h-10 shrink-0 pointer-events-auto font-bold">
+                  Subscribe
+                </Button>
+              </form>
+            </BorderRotate>
             )}
           </div>
 

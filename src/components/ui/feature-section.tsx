@@ -11,14 +11,17 @@ import { BorderRotate } from './animated-gradient-border';
 const FeatureCard = ({ icon, title }: { icon: React.ReactNode, title: string }) => (
   <BorderRotate 
     animationMode="auto-rotate" 
-    gradientColors={{ primary: 'rgba(28, 63, 41, 0.8)', secondary: 'rgba(184, 76, 65, 0.8)', accent: '#22c55e' }}
+    gradientColors={{ 
+      primary: 'rgba(28, 63, 41, 0.8)', 
+      secondary: 'rgba(184, 76, 65, 0.8)'
+    }}
     backgroundColor="#111111"
     borderWidth={2}
     borderRadius={16}
     className="hover:-translate-y-1 transition-transform duration-300 h-full"
   >
     <div className="p-6 flex flex-col gap-4 h-full">
-      <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-primary">
+      <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-secondary">
         {React.cloneElement(icon as React.ReactElement, { className: 'w-5 h-5' })}
       </div>
       <h4 className="font-bold text-white text-sm">{title}</h4>
@@ -28,7 +31,7 @@ const FeatureCard = ({ icon, title }: { icon: React.ReactNode, title: string }) 
 
 export default function FeatureSection() {
   return (
-    <section className="py-24 px-6 md:px-12 lg:px-24 bg-[#0A0E0C] text-white relative overflow-hidden">
+    <section className="pt-12 pb-24 px-6 md:px-12 lg:px-24 bg-[#0A0E0C] text-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
           
@@ -52,7 +55,7 @@ export default function FeatureSection() {
                   whileHover={{ scale: 1.02 }}
                   className="w-full h-40 bg-green-600 rounded-2xl overflow-hidden relative shrink-0 cursor-pointer"
                 >
-                   <img src="https://images.unsplash.com/photo-1518605368461-1ee7c532066d?auto=format&fit=crop&w=600&q=80" className="w-full h-full object-cover" alt="Pitch" />
+                   <img src="https://images.unsplash.com/photo-1459865264687-595d652de67e?auto=format&fit=crop&w=800&q=80" className="w-full h-full object-cover" alt="Pitch" />
                    <div className="absolute bottom-2 left-2 bg-[#1A2E20] text-white text-[10px] px-2 py-1 rounded-lg flex items-center gap-1 font-bold">
                      <Star className="w-3 h-3 text-yellow-400 fill-yellow-400" /> 5
                    </div>

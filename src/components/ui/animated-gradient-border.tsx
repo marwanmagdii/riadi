@@ -14,7 +14,7 @@ interface BorderRotateProps extends Omit<HTMLAttributes<HTMLDivElement>, 'classN
   gradientColors?: {
     primary: string;
     secondary: string;
-    accent: string;
+    accent?: string;
   };
   backgroundColor?: string;
  
@@ -29,7 +29,7 @@ interface BorderRotateProps extends Omit<HTMLAttributes<HTMLDivElement>, 'classN
 const defaultGradientColors = {
   primary: '#1C3F29',
   secondary: '#B84C41',
-  accent: '#22c55e'
+  accent: '#1C3F29'
 };
 
 const BorderRotate: React.FC<BorderRotateProps> = ({
@@ -58,10 +58,12 @@ const BorderRotate: React.FC<BorderRotateProps> = ({
     }
   };
  
+  const colors = { ...defaultGradientColors, ...gradientColors };
+
   const combinedStyle: CSSProperties = {
-    '--gradient-primary': gradientColors.primary,
-    '--gradient-secondary': gradientColors.secondary,
-    '--gradient-accent': gradientColors.accent,
+    '--gradient-primary': colors.primary,
+    '--gradient-secondary': colors.secondary,
+    '--gradient-accent': colors.accent,
     '--bg-color': backgroundColor,
     '--border-width': `${borderWidth}px`,
     '--border-radius': `${borderRadius}px`,
@@ -73,15 +75,8 @@ const BorderRotate: React.FC<BorderRotateProps> = ({
       conic-gradient(
         from var(--gradient-angle, 0deg),
         ${gradientColors.primary} 0%,
-        ${gradientColors.secondary} 37%,
-        ${gradientColors.accent} 30%,
-        ${gradientColors.secondary} 33%,
-        ${gradientColors.primary} 40%,
-        ${gradientColors.primary} 50%,
-        ${gradientColors.secondary} 77%,
-        ${gradientColors.accent} 80%,
-        ${gradientColors.secondary} 83%,
-        ${gradientColors.primary} 90%
+        ${gradientColors.secondary} 50%,
+        ${gradientColors.primary} 100%
       )
     `,
     backgroundClip: 'padding-box, border-box',

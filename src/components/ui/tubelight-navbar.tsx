@@ -53,7 +53,7 @@ export function NavBar({ items, className }: NavBarProps) {
         className,
       )}
       style={{ 
-        backgroundImage: 'url(/bg.svg)',
+        backgroundImage: 'url(/src/images/bg.svg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundColor: 'rgba(0, 0, 0, 0.8)',
@@ -62,7 +62,7 @@ export function NavBar({ items, className }: NavBarProps) {
     >
       <div className="px-4 sm:px-6 lg:px-8 h-12 md:h-14 flex items-center relative">
         <Link to="/" className="flex items-center gap-2 shrink-0 absolute left-4 sm:left-6 lg:left-8">
-          <img src="/Logo_transparent.svg" alt="Riadi Logo" className="h-6 md:h-8 w-auto" />
+          <img src="/src/images/Logo_transparent.svg" alt="Riadi Logo" className="h-6 md:h-8 w-auto" />
         </Link>
 
         <div className="flex items-center gap-1 sm:gap-2 mx-auto">

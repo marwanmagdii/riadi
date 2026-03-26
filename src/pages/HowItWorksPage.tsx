@@ -12,7 +12,7 @@ export default function HowItWorksPage() {
     <div className="min-h-screen bg-[#0A0E0C] text-white selection:bg-secondary selection:text-white relative">
       <NavBar2 />
 
-      <div className="pt-24 md:pt-32">
+      <div className="pt-12 md:pt-16">
         <FeatureSection />
       </div>
       <Footer />
