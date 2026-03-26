@@ -7,9 +7,7 @@ export default function Footer() {
     <footer 
       className="border-t border-white/10 py-6 px-6 md:px-12 lg:px-24 text-center"
       style={{ 
-        backgroundImage: 'url(/bg_main.png)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        background: 'linear-gradient(to bottom, #050505, #0A0E0C)',
         backgroundColor: '#050505'
       }}
     >

@@ -12,9 +12,7 @@ export function NavBar2({ className }: { className?: string }) {
         className,
       )}
       style={{ 
-        backgroundImage: 'url(/bg_main.png)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(10, 14, 12, 0.9))',
         backgroundColor: 'rgba(0, 0, 0, 0.8)',
         backdropFilter: 'blur(10px)'
       }}
