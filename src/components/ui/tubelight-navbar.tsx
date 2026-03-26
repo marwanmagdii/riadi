@@ -54,7 +54,7 @@ export function NavBar({ items, className }: NavBarProps) {
         className,
       )}
       style={{ 
-        backgroundImage: 'url(/bg.png)',
+        backgroundImage: 'url(/bg_main.png)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundColor: 'rgba(0, 0, 0, 0.8)',

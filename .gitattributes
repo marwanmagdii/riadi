@@ -1,6 +1,13 @@
+* text=auto
 *.png binary
 *.jpg binary
-*.ico binary
 *.jpeg binary
-*.gif binary
 *.webp binary
+*.gif binary
+*.ico binary
+public/*.png binary
+public/*.jpg binary
+public/*.jpeg binary
+public/*.webp binary
+public/*.gif binary
+public/*.ico binary
