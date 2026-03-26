@@ -12,7 +12,7 @@ export function NavBar2({ className }: { className?: string }) {
         className,
       )}
       style={{ 
-        backgroundImage: 'url(/bg.png)',
+        backgroundImage: `url(${import.meta.env.BASE_URL}bg.png)`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundColor: 'rgba(0, 0, 0, 0.8)',

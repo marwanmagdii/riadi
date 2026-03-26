@@ -7,7 +7,7 @@ export default function Footer() {
     <footer 
       className="border-t border-white/10 py-6 px-6 md:px-12 lg:px-24 text-center"
       style={{ 
-        backgroundImage: 'url(/bg.png)',
+        backgroundImage: `url(${import.meta.env.BASE_URL}bg.png)`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundColor: '#050505'
