@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { Logo } from './logo';
+import bgImage from '../../assets/bg.png';
 
 export function NavBar2({ className }: { className?: string }) {
   return (
@@ -12,7 +13,7 @@ export function NavBar2({ className }: { className?: string }) {
         className,
       )}
       style={{ 
-        backgroundImage: `url(${import.meta.env.BASE_URL}bg.png)`,
+        backgroundImage: `url(${bgImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundColor: 'rgba(0, 0, 0, 0.8)',
