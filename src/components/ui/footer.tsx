@@ -1,14 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Logo } from './logo';
-import bgImage from '../../assets/bg.png';
 
 export default function Footer() {
   return (
     <footer 
       className="border-t border-white/10 py-6 px-6 md:px-12 lg:px-24 text-center"
       style={{ 
-        backgroundImage: `url(${bgImage})`,
+        backgroundImage: 'url(/bg.png)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundColor: '#050505'
