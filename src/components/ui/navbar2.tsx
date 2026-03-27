@@ -8,13 +8,10 @@ export function NavBar2({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-50 transition-all duration-300 border border-white/10 rounded-full overflow-hidden shadow-2xl",
+        "fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-50 transition-all duration-300 border border-white/10 rounded-full overflow-hidden shadow-2xl bg-[url('/assets/images/bg.png')] bg-cover bg-center",
         className,
       )}
       style={{ 
-        backgroundImage: 'url(/bg_main.png)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
         backgroundColor: 'rgba(0, 0, 0, 0.8)',
         backdropFilter: 'blur(10px)'
       }}

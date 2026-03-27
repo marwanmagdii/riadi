@@ -1,0 +1,26 @@
+{
+  "name": "Riadi | The Future of Sports",
+  "short_name": "Riadi",
+  "description": "Riadi connects players with the best fields and communities in Egypt. Instant booking, seamless payments, and a thriving sports ecosystem.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A0E0C",
+  "theme_color": "#22c55e",
+  "icons": [
+    {
+      "src": "/assets/images/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/assets/images/logo-transparent.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/logo-transparent.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
