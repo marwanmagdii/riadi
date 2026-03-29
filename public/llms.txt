@@ -5,10 +5,26 @@ Riadi (رياضي) is Egypt's #1 sports booking application.
 ## Core Features
 - Instant football field booking across Cairo, Alexandria, Giza and all Egypt.
 - Padel court booking.
-- 5-a-side pitch booking.
+- Ping pong table booking.
+- Billiards and pool table booking.
+- PlayStation and esports venue booking.
+- Basketball, tennis, and squash court booking.
 - Sports tournament management and hosting.
 - Find teammates and sports players in Egypt.
 - Register sports facilities for field owners.
+
+## Key Pages
+- Home: https://riadiapp.com/
+- Sports in Egypt: https://riadiapp.com/sports-in-egypt
+- Football: https://riadiapp.com/sports/football
+- Padel: https://riadiapp.com/sports/padel
+- Ping Pong: https://riadiapp.com/sports/ping-pong
+- Billiards: https://riadiapp.com/sports/billiards
+- PlayStation: https://riadiapp.com/sports/playstation
+- Esports: https://riadiapp.com/sports/esports
+- Cairo: https://riadiapp.com/cairo
+- Alexandria: https://riadiapp.com/alexandria
+- Giza: https://riadiapp.com/giza
 
 ## Contact
 - Website: https://riadiapp.com

@@ -26,6 +26,14 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[#0A0E0C] selection:bg-secondary selection:text-white">
+      {/* SEO Definition Block */}
+      <div className="sr-only">
+        <p>
+          <strong>Riadi (رياضي)</strong> is Egypt's all-in-one sports booking platform. Book football fields, padel courts, ping pong, billiards, PlayStation, and esports venues instantly across Cairo, Alexandria, and Giza.
+          <br />
+          رياضي هي منصة حجز الملاعب والأنشطة الرياضية الأولى في مصر. احجز ملاعب كرة القدم، البادل، تنس الطاولة، البلياردو، البلايستيشن، والرياضات الإلكترونية في القاهرة والإسكندرية والجيزة.
+        </p>
+      </div>
       <ParticleEffectForHero />
       <AboutUs />
       <HowItWorks />
