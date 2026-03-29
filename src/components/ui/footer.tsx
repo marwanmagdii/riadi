@@ -18,7 +18,7 @@ export default function Footer() {
         <div className="flex flex-wrap justify-center gap-4 text-[10px] text-primary uppercase tracking-widest font-bold">
           <Link to="/contact" className="hover:text-primary/80 transition-colors">Contact Us</Link>
           <Link to="/terms" className="hover:text-primary/80 transition-colors">Terms & Conditions</Link>
-          <Link to="/policy" className="hover:text-primary/80 transition-colors">Privacy Policy</Link>
+          <Link to="/privacy" className="hover:text-primary/80 transition-colors">Privacy Policy</Link>
         </div>
         <p className="text-primary text-sm font-light opacity-70 tracking-wide">
           © {new Date().getFullYear()} Riadi Sports. All rights reserved.

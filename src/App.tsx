@@ -10,7 +10,7 @@ import RegisterField from "./pages/RegisterField";
 import HowItWorksPage from "./pages/HowItWorksPage";
 import ContactPage from "./pages/ContactPage";
 import TermsPage from "./pages/TermsPage";
-import PolicyPage from "./pages/PolicyPage";
+import PrivacyPage from "./pages/PrivacyPage";
 import { NavBar } from "./components/ui/tubelight-navbar";
 import { Home as HomeIcon, Info, HelpCircle, Mail } from 'lucide-react';
 
@@ -33,7 +33,7 @@ export default function App() {
           <Route path="/how-it-works" element={<HowItWorksPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/terms" element={<TermsPage />} />
-          <Route path="/policy" element={<PolicyPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
         </Routes>
       </div>
     </Router>

@@ -64,7 +64,7 @@ function Hero() {
             </h1>
 
             <p className="text-lg md:text-xl leading-relaxed tracking-tight text-white/60 max-w-2xl text-center drop-shadow-md">
-              Riadi connects players with the best fields and communities. Instant booking, seamless payments, and a thriving sports ecosystem.
+              Riadi connects players with the best fields and communities. Instant booking and a thriving sports ecosystem.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 pt-8 items-center w-full max-w-3xl justify-center relative z-50 pointer-events-auto">

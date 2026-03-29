@@ -1,0 +1,22 @@
+# Riadi | رياضي
+
+Riadi (رياضي) is Egypt's #1 sports booking application.
+
+## Core Features
+- Instant football field booking across Cairo, Alexandria, Giza and all Egypt.
+- Padel court booking.
+- 5-a-side pitch booking.
+- Sports tournament management and hosting.
+- Find teammates and sports players in Egypt.
+- Register sports facilities for field owners.
+
+## Contact
+- Website: https://riadiapp.com
+- Email: contact@riadiapp.com
+
+## Social Media
+- Instagram: https://www.instagram.com/riadiapp/
+- TikTok: https://www.tiktok.com/@riadiapp
+- Twitter: https://twitter.com/riadiapp
+- Facebook: https://www.facebook.com/riadiapp
+- LinkedIn: https://www.linkedin.com/company/riadi
