@@ -118,20 +118,22 @@ export function NavBar({ items, className }: NavBarProps) {
         </div>
 
         <div className="absolute right-4 sm:right-6 lg:right-8">
-          <a 
-            href="#partner-section" 
+          <Link 
+            to="/#partner-section" 
             onClick={(e) => {
-              e.preventDefault();
-              const element = document.getElementById('partner-section');
-              if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-                window.history.pushState(null, '', '#partner-section');
+              if (location.pathname === '/') {
+                e.preventDefault();
+                const element = document.getElementById('partner-section');
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth' });
+                  window.history.pushState(null, '', '/#partner-section');
+                }
               }
             }}
             className="bg-secondary hover:bg-secondary/90 text-white text-[10px] md:text-xs font-bold px-3 md:px-4 py-1.5 md:py-2 rounded-full transition-all duration-300 shadow-lg shadow-secondary/20 uppercase tracking-wider"
           >
             Host
-          </a>
+          </Link>
         </div>
       </div>
     </div>

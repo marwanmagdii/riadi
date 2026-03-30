@@ -36,6 +36,7 @@ const districtsByCity: Record<string, string[]> = {
 export default function HostTournament() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [selectedCity, setSelectedCity] = useState('');
+  const [selectedDistrict, setSelectedDistrict] = useState('');
   
   // State for controlled inputs
   const [firstName, setFirstName] = useState('');
@@ -75,6 +76,7 @@ export default function HostTournament() {
       setIsSubmitted(true);
       form.reset(); // Clear the form fields
       setSelectedCity(''); // Reset the city dropdown
+      setSelectedDistrict(''); // Reset the district dropdown
       setFirstName('');
       setLastName('');
       setEmail('');
@@ -220,7 +222,10 @@ export default function HostTournament() {
                     name="entry.2000155189"
                     required 
                     value={selectedCity}
-                    onChange={(e) => setSelectedCity(e.target.value)}
+                    onChange={(e) => {
+                      setSelectedCity(e.target.value);
+                      setSelectedDistrict('');
+                    }}
                     className="w-full bg-[#0A0E0C] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors appearance-none"
                   >
                     <option value="" disabled>Select a city</option>
@@ -234,7 +239,8 @@ export default function HostTournament() {
                   <select 
                     name="entry.1418914506"
                     required 
-                    defaultValue=""
+                    value={selectedDistrict}
+                    onChange={(e) => setSelectedDistrict(e.target.value)}
                     disabled={!selectedCity}
                     className="w-full bg-[#0A0E0C] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors appearance-none disabled:opacity-50 disabled:cursor-not-allowed"
                   >
