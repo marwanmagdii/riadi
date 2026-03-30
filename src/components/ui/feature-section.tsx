@@ -22,7 +22,7 @@ const FeatureCard = ({ icon, title }: { icon: React.ReactNode, title: string }) 
   >
     <div className="p-6 flex flex-col gap-4 h-full">
       <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-secondary">
-        {React.cloneElement(icon as React.ReactElement<{ className?: string }>, { className: 'w-5 h-5' })}
+        {React.cloneElement(icon as React.ReactElement, { className: 'w-5 h-5' })}
       </div>
       <h4 className="font-bold text-white text-sm">{title}</h4>
     </div>

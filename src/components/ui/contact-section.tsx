@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Mail, MapPin, Send, ChevronDown, Copy, ExternalLink } from 'lucide-react';
 
 export default function ContactSection() {
+  const [currentUrl, setCurrentUrl] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -11,6 +12,8 @@ export default function ContactSection() {
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    setCurrentUrl(window.location.href);
+    
     // Close dropdown when clicking outside
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -106,39 +109,17 @@ export default function ContactSection() {
         <div className="bg-[#111814] border border-white/10 rounded-3xl p-8 shadow-2xl">
           <form 
             className="space-y-6" 
-            onSubmit={async (e) => {
-              e.preventDefault();
-              try {
-                const response = await fetch('https://api.riadiapp.com/contact', {
-                  method: 'POST',
-                  headers: {
-                    'Content-Type': 'application/json',
-                  },
-                  body: JSON.stringify({
-                    name: `${firstName} ${lastName}`.trim(),
-                    email,
-                    subject: subject || undefined,
-                    message: (e.target as any).message.value,
-                  }),
-                });
-                
-                if (response.ok) {
-                  alert('Message sent successfully!');
-                  setFirstName('');
-                  setLastName('');
-                  setEmail('');
-                  setSubject('');
-                  (e.target as any).message.value = '';
-                } else {
-                  const errorData = await response.json().catch(() => null);
-                  alert(`Failed to send message: ${errorData?.message || response.statusText}`);
-                }
-              } catch (error) {
-                console.error('Error sending message:', error);
-                alert('An error occurred while sending your message. Please try again later.');
-              }
-            }}
+            method="POST" 
+            action="https://formsubmit.co/marwanmagdy680@gmail.com"
           >
+            {/* Hidden Configuration Fields */}
+            <input type="hidden" name="_next" value={currentUrl} />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="name" value={`${firstName} ${lastName}`.trim()} />
+            <input type="hidden" name="_replyto" value={email} />
+            <input type="hidden" name="_subject" value={subject ? `Riadi Contact: ${subject}` : "New message from Riadi website!"} />
+            <input type="hidden" name="_timezone" value="Africa/Cairo" />
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <label className="text-sm font-medium text-white/70">First Name</label>

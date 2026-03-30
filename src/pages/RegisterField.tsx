@@ -36,7 +36,6 @@ const districtsByCity: Record<string, string[]> = {
 export default function RegisterField() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [selectedCity, setSelectedCity] = useState('');
-  const [selectedDistrict, setSelectedDistrict] = useState('');
   
   // State for controlled inputs
   const [firstName, setFirstName] = useState('');
@@ -75,7 +74,6 @@ export default function RegisterField() {
         setIsSubmitted(true);
         form.reset(); 
         setSelectedCity(''); 
-        setSelectedDistrict('');
         setFirstName('');
         setLastName('');
         setEmail('');
@@ -227,10 +225,7 @@ export default function RegisterField() {
                     name="City"
                     required 
                     value={selectedCity}
-                    onChange={(e) => {
-                      setSelectedCity(e.target.value);
-                      setSelectedDistrict('');
-                    }}
+                    onChange={(e) => setSelectedCity(e.target.value)}
                     className="w-full bg-[#0A0E0C] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors appearance-none"
                   >
                     <option value="" disabled>Select a city</option>
@@ -244,8 +239,7 @@ export default function RegisterField() {
                   <select 
                     name="District"
                     required 
-                    value={selectedDistrict}
-                    onChange={(e) => setSelectedDistrict(e.target.value)}
+                    defaultValue=""
                     disabled={!selectedCity}
                     className="w-full bg-[#0A0E0C] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors appearance-none disabled:opacity-50 disabled:cursor-not-allowed"
                   >
