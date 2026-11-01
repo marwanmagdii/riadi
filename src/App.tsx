@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import HostTournament from "./pages/HostTournament";
 import RegisterField from "./pages/RegisterField";
@@ -25,25 +25,44 @@ const navItems = [
   { name: 'How it Works', url: '/how-it-works', icon: HelpCircle }
 ];
 
+const SELF_NAV_ROUTES = new Set([
+  '/host-tournament',
+  '/register-field',
+  '/how-it-works',
+  '/contact',
+  '/terms',
+  '/privacy',
+  '/qr',
+]);
+
+function AppShell() {
+  const { pathname } = useLocation();
+  const showMainNav = !SELF_NAV_ROUTES.has(pathname);
+
+  return (
+    <div className="relative min-h-screen bg-[#0A0E0C] overflow-x-hidden">
+      {showMainNav && <NavBar items={navItems} />}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/host-tournament" element={<HostTournament />} />
+        <Route path="/register-field" element={<RegisterField />} />
+        <Route path="/how-it-works" element={<HowItWorksPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/terms" element={<TermsPage />} />
+        <Route path="/privacy" element={<PrivacyPage />} />
+        <Route path="/qr" element={<QrPage />} />
+        <Route path="/sports-in-egypt" element={<SportsInEgypt />} />
+        <Route path="/sports/:sport" element={<SportPage />} />
+        <Route path="/:city" element={<CityPage />} />
+      </Routes>
+    </div>
+  );
+}
+
 export default function App() {
   return (
     <Router>
-      <div className="relative min-h-screen bg-[#0A0E0C]">
-        <NavBar items={navItems} />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/host-tournament" element={<HostTournament />} />
-          <Route path="/register-field" element={<RegisterField />} />
-          <Route path="/how-it-works" element={<HowItWorksPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/terms" element={<TermsPage />} />
-          <Route path="/privacy" element={<PrivacyPage />} />
-          <Route path="/qr" element={<QrPage />} />
-          <Route path="/sports-in-egypt" element={<SportsInEgypt />} />
-          <Route path="/sports/:sport" element={<SportPage />} />
-          <Route path="/:city" element={<CityPage />} />
-        </Routes>
-      </div>
+      <AppShell />
     </Router>
   );
 }

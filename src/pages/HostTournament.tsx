@@ -127,19 +127,19 @@ export default function HostTournament() {
 
       {/* Simple Header */}
       <nav className="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-black/20 backdrop-blur-md border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 h-20 flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 lg:px-24 h-16 sm:h-20 flex justify-between items-center relative">
           <Link to="/" className="flex items-center gap-2 text-white/70 hover:text-white transition-colors">
             <ArrowLeft className="w-5 h-5" />
-            <span className="font-medium">Back to Home</span>
+            <span className="font-medium text-sm sm:text-base">Back<span className="hidden sm:inline"> to Home</span></span>
           </Link>
           <div className="flex items-center space-x-3">
             <Logo />
           </div>
-          <div className="w-24"></div> {/* Spacer for centering */}
+          <div className="w-14 sm:w-24"></div> {/* Spacer for centering */}
         </div>
       </nav>
 
-      <section className="pt-32 pb-24 px-6 md:px-12 lg:px-24 relative overflow-hidden">
+      <section className="pt-24 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6 md:px-12 lg:px-24 relative overflow-hidden">
         {/* Background glow */}
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[100px] pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[100px] pointer-events-none"></div>
@@ -147,13 +147,13 @@ export default function HostTournament() {
         <div className="max-w-3xl mx-auto relative z-10">
           <div className="text-center mb-12">
             <h4 className="text-sm font-bold tracking-[0.2em] text-secondary uppercase mb-3">Partner With Us</h4>
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">Host a Tournament</h1>
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight mb-4 sm:mb-6">Host a Tournament</h1>
             <p className="text-white/60 text-lg">
               Fill out the form below with your tournament details, and our team will get back to you to help organize the perfect event.
             </p>
           </div>
 
-          <div className="bg-[#111814] border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl">
+          <div className="bg-[#111814] border border-white/10 rounded-3xl p-5 sm:p-8 md:p-12 shadow-2xl">
             <form 
               action="https://docs.google.com/forms/d/e/1FAIpQLSeUe1SCr0GH-B3sdU1zSambsN0iMH20pgspQpAHv9_qJcTwkg/formResponse" 
               method="POST"

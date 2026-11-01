@@ -61,39 +61,39 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact-section" className="py-24 px-6 md:px-12 lg:px-24 bg-[#050505] text-white border-t border-white/5 relative overflow-hidden">
+    <section id="contact-section" className="py-16 md:py-24 px-4 sm:px-6 md:px-12 lg:px-24 bg-[#050505] text-white border-t border-white/5 relative overflow-hidden">
       {/* Background glow */}
       <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[100px] pointer-events-none"></div>
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 relative z-10">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 relative z-10">
         {/* Left: Contact Info */}
-        <div className="space-y-8">
-          <div>
-            <h4 className="text-sm font-bold tracking-[0.2em] text-secondary uppercase mb-3">Get In Touch</h4>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Ready to transform your sports experience?</h2>
-            <p className="text-white/60 text-lg max-w-md">
+        <div className="space-y-6 sm:space-y-8">
+          <div className="text-center lg:text-left">
+            <h4 className="text-xs sm:text-sm font-bold tracking-[0.2em] text-secondary uppercase mb-3">Get In Touch</h4>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4">Ready to transform your sports experience?</h2>
+            <p className="text-white/60 text-base sm:text-lg max-w-md mx-auto lg:mx-0">
               Whether you're a player looking for the next match, or a facility owner wanting to streamline operations, we're here to help.
             </p>
           </div>
 
-          <div className="space-y-6 pt-4">
+          <div className="space-y-5 sm:space-y-6 pt-2 sm:pt-4 max-w-sm mx-auto lg:mx-0">
             <div className="flex items-center gap-4 relative" ref={dropdownRef}>
-              <div className="w-12 h-12 bg-[#111814] border border-white/10 rounded-full flex items-center justify-center text-primary shrink-0">
+              <div className="w-11 h-11 sm:w-12 sm:h-12 bg-[#111814] border border-white/10 rounded-full flex items-center justify-center text-primary shrink-0">
                 <Mail className="w-5 h-5" />
               </div>
-              <div>
-                <p className="text-sm text-white/50 font-medium">Email Us</p>
+              <div className="min-w-0">
+                <p className="text-xs sm:text-sm text-white/50 font-medium">Email Us</p>
                 <button 
                   onClick={() => setIsEmailDropdownOpen(!isEmailDropdownOpen)}
-                  className="text-lg font-bold hover:text-secondary transition-colors flex items-center gap-2"
+                  className="text-base sm:text-lg font-bold hover:text-secondary transition-colors flex items-center gap-2 truncate"
                 >
-                  contact@riadiapp.com
-                  <ChevronDown className={`w-4 h-4 transition-transform ${isEmailDropdownOpen ? 'rotate-180' : ''}`} />
+                  <span className="truncate">contact@riadiapp.com</span>
+                  <ChevronDown className={`w-4 h-4 shrink-0 transition-transform ${isEmailDropdownOpen ? 'rotate-180' : ''}`} />
                 </button>
                 
                 {/* Email Dropdown */}
                 {isEmailDropdownOpen && (
-                  <div className="absolute top-full left-16 mt-2 w-56 bg-[#111814] border border-white/10 rounded-xl shadow-2xl overflow-hidden z-50 animate-in fade-in slide-in-from-top-2">
+                  <div className="absolute top-full left-0 sm:left-16 mt-2 w-56 bg-[#111814] border border-white/10 rounded-xl shadow-2xl overflow-hidden z-50 animate-in fade-in slide-in-from-top-2">
                     <button 
                       onClick={handleCopyEmail}
                       className="w-full px-4 py-3 flex items-center gap-3 hover:bg-white/5 transition-colors text-sm text-left"
@@ -123,21 +123,21 @@ export default function ContactSection() {
             </div>
             
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-[#111814] border border-white/10 rounded-full flex items-center justify-center text-primary">
+              <div className="w-11 h-11 sm:w-12 sm:h-12 bg-[#111814] border border-white/10 rounded-full flex items-center justify-center text-primary shrink-0">
                 <MapPin className="w-5 h-5" />
               </div>
               <div>
-                <p className="text-sm text-white/50 font-medium">Location</p>
-                <p className="text-lg font-bold">Cairo, Egypt</p>
+                <p className="text-xs sm:text-sm text-white/50 font-medium">Location</p>
+                <p className="text-base sm:text-lg font-bold">Cairo, Egypt</p>
               </div>
             </div>
           </div>
         </div>
 
         {/* Right: Contact Form */}
-        <div className="bg-[#111814] border border-white/10 rounded-3xl p-8 shadow-2xl">
+        <div className="bg-[#111814] border border-white/10 rounded-3xl p-5 sm:p-8 shadow-2xl">
           <form 
-            className="space-y-6" 
+            className="space-y-5 sm:space-y-6" 
             method="POST" 
             action="https://formsubmit.co/marwanmagdy680@gmail.com"
             onSubmit={handleFormSubmit}
@@ -160,7 +160,7 @@ export default function ContactSection() {
               autoComplete="off"
             />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
               <div className="space-y-2">
                 <label className="text-sm font-medium text-white/70">First Name</label>
                 <input 
@@ -244,7 +244,7 @@ export default function ContactSection() {
             <button 
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-4 bg-primary hover:bg-primary/90 disabled:opacity-60 text-white rounded-xl font-bold tracking-wide transition-colors flex items-center justify-center gap-2 shadow-lg shadow-primary/20"
+              className="w-full py-3.5 sm:py-4 bg-primary hover:bg-primary/90 disabled:opacity-60 text-white rounded-xl font-bold tracking-wide transition-colors flex items-center justify-center gap-2 shadow-lg shadow-primary/20"
             >
               <span>{isSubmitting ? 'Verifying...' : 'Send Message'}</span>
               <Send className="w-4 h-4" />

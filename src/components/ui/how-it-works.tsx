@@ -26,22 +26,22 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="py-24 px-6 md:px-12 lg:px-24 bg-[#0A0E0C] text-white border-t border-white/5">
+    <section id="how-it-works" className="py-16 md:py-24 px-4 sm:px-6 md:px-12 lg:px-24 bg-[#0A0E0C] text-white border-t border-white/5">
       <div className="max-w-7xl mx-auto">
         <div className="max-w-4xl mx-auto items-center">
-          <div className="space-y-12">
-            <div className="text-center space-y-4">
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
+          <div className="space-y-8 sm:space-y-12">
+            <div className="text-center space-y-3 sm:space-y-4">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
                 Your Game, <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary animate-pulse">Simplified</span>
               </h2>
-              <p className="text-white/60 text-lg">
+              <p className="text-white/60 text-base sm:text-lg">
                 Everything you need to play, compete, and manage in one seamless platform.
               </p>
             </div>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
               {steps.map((step, i) => (
-                <div key={i} className="bg-[#111814] border border-white/5 p-6 rounded-3xl hover:border-secondary/30 transition-colors group">
+                <div key={i} className="bg-[#111814] border border-white/5 p-5 sm:p-6 rounded-3xl hover:border-secondary/30 transition-colors group">
                   <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                     {step.icon}
                   </div>

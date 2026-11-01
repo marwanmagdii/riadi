@@ -231,7 +231,7 @@ const AntiGravityCanvas: React.FC = () => {
 
 export default function ParticleEffectForHero() {
   return (
-    <div className="relative w-full h-screen bg-transparent overflow-hidden selection:bg-secondary selection:text-white">
+    <div className="relative w-full min-h-[100svh] bg-transparent overflow-hidden selection:bg-secondary selection:text-white">
       <AntiGravityCanvas />
       <Hero />
     </div>

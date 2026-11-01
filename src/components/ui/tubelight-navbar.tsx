@@ -21,17 +21,6 @@ interface NavBarProps {
 export function NavBar({ items, className }: NavBarProps) {
   const location = useLocation();
   const [activeTab, setActiveTab] = useState(items[0].name)
-  const [isMobile, setIsMobile] = useState(false)
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
-
-    handleResize()
-    window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
-  }, [])
 
   useEffect(() => {
     const currentItem = items.find(item => {
@@ -50,18 +39,20 @@ export function NavBar({ items, className }: NavBarProps) {
   return (
     <div
       className={cn(
-        "fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-50 transition-all duration-300 border border-white/10 rounded-full overflow-hidden shadow-2xl bg-[url('/assets/images/bg.png')] bg-cover bg-center",
+        "fixed top-3 sm:top-4 left-1/2 -translate-x-1/2 w-[94%] sm:w-[95%] max-w-7xl z-50 transition-all duration-300 border border-white/10 rounded-full overflow-hidden shadow-2xl bg-[url('/assets/images/bg.png')] bg-cover bg-center",
         className,
       )}
       style={{ 
-        backgroundColor: 'rgba(0, 0, 0, 0.8)',
-        backdropFilter: 'blur(10px)'
+        backgroundColor: 'rgba(0, 0, 0, 0.85)',
+        backdropFilter: 'blur(12px)'
       }}
     >
-      <div className="px-4 sm:px-6 lg:px-8 h-12 md:h-14 flex items-center relative">
-        <Logo imgClassName="h-6 md:h-8" />
+      <div className="px-3 sm:px-6 lg:px-8 h-12 md:h-14 flex items-center justify-between gap-1 sm:gap-2">
+        <div className="shrink-0">
+          <Logo imgClassName="h-5 sm:h-6 md:h-8" />
+        </div>
 
-        <div className="flex items-center gap-1 sm:gap-2 mx-auto">
+        <div className="flex items-center gap-0.5 sm:gap-2">
           {items.map((item) => {
             const Icon = item.icon
             const isActive = activeTab === item.name
@@ -86,15 +77,16 @@ export function NavBar({ items, className }: NavBarProps) {
                     window.history.pushState(null, '', '/');
                   }
                 }}
+                aria-label={item.name}
                 className={cn(
-                  "relative cursor-pointer text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1.5 rounded-full transition-colors shrink-0 uppercase tracking-wider",
+                  "relative cursor-pointer text-[10px] sm:text-xs font-bold px-2.5 sm:px-3 py-1.5 rounded-full transition-colors shrink-0 uppercase tracking-wider",
                   "text-primary hover:text-primary/80",
                   isActive && "text-secondary",
                 )}
               >
                 <span className="hidden md:inline whitespace-nowrap">{item.name}</span>
-                <span className="md:hidden">
-                  <Icon size={14} strokeWidth={2.5} />
+                <span className="md:hidden flex items-center justify-center">
+                  <Icon size={15} strokeWidth={2.5} />
                 </span>
                 {isActive && (
                   <motion.div
@@ -107,8 +99,8 @@ export function NavBar({ items, className }: NavBarProps) {
                       damping: 30,
                     }}
                   >
-                    <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-8 h-1 bg-gradient-to-r from-secondary to-primary rounded-t-full">
-                      <div className="absolute w-12 h-6 bg-secondary/20 rounded-full blur-md -top-2 -left-2" />
+                    <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-6 sm:w-8 h-1 bg-gradient-to-r from-secondary to-primary rounded-t-full">
+                      <div className="absolute w-10 sm:w-12 h-6 bg-secondary/20 rounded-full blur-md -top-2 -left-2" />
                     </div>
                   </motion.div>
                 )}
@@ -117,7 +109,7 @@ export function NavBar({ items, className }: NavBarProps) {
           })}
         </div>
 
-        <div className="absolute right-4 sm:right-6 lg:right-8">
+        <div className="shrink-0">
           <a 
             href="#partner-section" 
             onClick={(e) => {
@@ -128,7 +120,7 @@ export function NavBar({ items, className }: NavBarProps) {
                 window.history.pushState(null, '', '#partner-section');
               }
             }}
-            className="bg-secondary hover:bg-secondary/90 text-white text-[10px] md:text-xs font-bold px-3 md:px-4 py-1.5 md:py-2 rounded-full transition-all duration-300 shadow-lg shadow-secondary/20 uppercase tracking-wider"
+            className="bg-secondary hover:bg-secondary/90 text-white text-[10px] md:text-xs font-bold px-3 md:px-4 py-1.5 md:py-2 rounded-full transition-all duration-300 shadow-lg shadow-secondary/20 uppercase tracking-wider inline-block"
           >
             Host
           </a>
