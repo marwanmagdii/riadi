@@ -49,7 +49,7 @@ export default function Footer() {
           <Link to="/privacy" className="hover:text-primary/80 transition-colors">Privacy Policy</Link>
           <a href="/support" className="hover:text-primary/80 transition-colors">Support</a>
           <a href="/delete-account" className="hover:text-primary/80 transition-colors">Delete Account</a>
-          <Link to="/qr" className="px-2.5 py-1 rounded-full bg-primary/20 border border-primary/40 text-white hover:bg-primary/40 transition-colors">QR</Link>
+          <Link to="/qr" className="hover:text-primary/80 transition-colors">QR</Link>
         </div>
         <p className="text-primary text-sm font-light opacity-70 tracking-wide">
           © {new Date().getFullYear()} Riadi Sports. All rights reserved.
