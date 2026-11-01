@@ -15,6 +15,7 @@ const HowItWorksPage = lazy(() => import("./pages/HowItWorksPage"));
 const ContactPage = lazy(() => import("./pages/ContactPage"));
 const TermsPage = lazy(() => import("./pages/TermsPage"));
 const PrivacyPage = lazy(() => import("./pages/PrivacyPage"));
+const QrPage = lazy(() => import("./pages/QrPage"));
 const SportsInEgypt = lazy(() => import("./pages/SportsInEgypt"));
 const SportPage = lazy(() => import("./pages/SportPage"));
 const CityPage = lazy(() => import("./pages/CityPage"));
@@ -40,6 +41,7 @@ export default function App() {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/terms" element={<TermsPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="/qr" element={<QrPage />} />
             <Route path="/sports-in-egypt" element={<SportsInEgypt />} />
             <Route path="/sports/:sport" element={<SportPage />} />
             <Route path="/:city" element={<CityPage />} />
