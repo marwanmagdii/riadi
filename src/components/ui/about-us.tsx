@@ -17,6 +17,8 @@ export default function AboutUs() {
             <img 
               src="/assets/images/logo.png" 
               alt="Riadi Logo" 
+              loading="lazy"
+              decoding="async"
               className="relative max-w-[80%] h-auto object-contain rounded-3xl transition-transform duration-500 group-hover:scale-105"
               referrerPolicy="no-referrer"
             />

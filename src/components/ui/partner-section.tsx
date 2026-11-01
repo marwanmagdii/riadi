@@ -39,6 +39,8 @@ export function PartnerSection() {
             <img 
               src="/assets/images/sports-facility.png"
               alt="Sports Facility Management" 
+              loading="lazy"
+              decoding="async"
               className="relative w-full h-auto rounded-3xl border border-white/10 shadow-2xl object-cover aspect-[4/3] pointer-events-none"
               referrerPolicy="no-referrer"
             />
