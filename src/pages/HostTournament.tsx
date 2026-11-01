@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { Send, ArrowLeft } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Send, ArrowLeft, AlertCircle } from 'lucide-react';
+import { validateEmail, validateEmailSync } from '../lib/email-validator';
 import { Link } from 'react-router-dom';
 import { Logo } from '../components/ui/logo';
 
@@ -41,6 +42,9 @@ export default function HostTournament() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const submittingRef = useRef(false);
   const [tournamentName, setTournamentName] = useState('');
   const [expectedTeams, setExpectedTeams] = useState('');
   const [details, setDetails] = useState('');
@@ -52,7 +56,18 @@ export default function HostTournament() {
   const handleTournamentSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); 
     
+    if (submittingRef.current) return;
+    submittingRef.current = true;
+    setIsSubmitting(true);
     const form = e.currentTarget;
+    const check = await validateEmail(email);
+    if (!check.valid) {
+      setEmailError(check.reason || 'Please enter a valid, non-disposable email address.');
+      submittingRef.current = false;
+      setIsSubmitting(false);
+      return;
+    }
+    setEmailError('');
     const formData = new FormData(form);
     
     // CRITICAL: Google Forms expects application/x-www-form-urlencoded data
@@ -87,6 +102,9 @@ export default function HostTournament() {
     } catch (error) {
       console.error("Form submission error:", error);
       alert("Something went wrong. Please try again.");
+    } finally {
+      submittingRef.current = false;
+      setIsSubmitting(false);
     }
   };
 
@@ -175,11 +193,27 @@ export default function HostTournament() {
                   type="email" 
                   name="entry.441167234"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => {
+                    const val = e.target.value;
+                    setEmail(val);
+                    if (emailError && validateEmailSync(val).valid) setEmailError('');
+                  }}
+                  onBlur={() => {
+                    if (email.trim()) {
+                      const res = validateEmailSync(email);
+                      setEmailError(res.valid ? '' : (res.reason || ''));
+                    }
+                  }}
                   className="w-full bg-[#0A0E0C] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors" 
                   placeholder="ahmed@example.com" 
                   required
                 />
+                {emailError && (
+                  <p className="text-xs text-red-400 flex items-center gap-1.5 pt-1">
+                    <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                    <span>{emailError}</span>
+                  </p>
+                )}
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

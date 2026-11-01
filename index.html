@@ -2,6 +2,19 @@
 <html lang="en">
   <head>
   <meta charset="UTF-8">
+  <!-- SPA deep-link decoder: restores the path that public/404.html encoded as ?p=... (GitHub Pages) -->
+  <script>
+    (function (l) {
+      if (l.search[1] === 'p' && l.search[2] === '=') {
+        var decoded = l.search.slice(1).split('&').map(function (s) {
+          return s.replace(/~and~/g, '&');
+        }).join('?');
+        window.history.replaceState(null, null,
+          l.pathname.slice(0, -1) + decoded.slice(2).replace('?q=', '?') + l.hash
+        );
+      }
+    })(window.location);
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Primary SEO -->
@@ -27,6 +40,7 @@
   <meta name="application-name" content="Riadi">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Riadi رياضي">
+  <meta name="apple-itunes-app" content="app-id=6770214844">
   <meta name="language" content="English, Arabic">
 
   <!-- Hreflang -->
@@ -113,6 +127,10 @@
           "حجز مراكز البلايستيشن في مصر",
           "بطولات رياضية في مصر"
         ],
+        "downloadUrl": [
+          "https://apps.apple.com/eg/app/riadi/id6770214844",
+          "https://play.google.com/store/apps/details?id=com.riadi"
+        ],
         "sameAs": [
           "https://www.instagram.com/riadiapp/",
           "https://www.tiktok.com/@riadiapp",
@@ -138,6 +156,10 @@
           "contactType": "customer support",
           "availableLanguage": ["Arabic", "English"]
         },
+        "downloadUrl": [
+          "https://apps.apple.com/eg/app/riadi/id6770214844",
+          "https://play.google.com/store/apps/details?id=com.riadi"
+        ],
         "sameAs": [
           "https://www.instagram.com/riadiapp/",
           "https://www.tiktok.com/@riadiapp",

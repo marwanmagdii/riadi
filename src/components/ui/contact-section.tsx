@@ -1,18 +1,24 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Mail, MapPin, Send, ChevronDown, Copy, ExternalLink } from 'lucide-react';
+import { Mail, MapPin, Send, ChevronDown, Copy, ExternalLink, AlertCircle } from 'lucide-react';
+import { validateEmail, validateEmailSync } from '../../lib/email-validator';
 
 export default function ContactSection() {
   const [currentUrl, setCurrentUrl] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
+  const [emailError, setEmailError] = useState('');
   const [subject, setSubject] = useState('');
+  const [honeypot, setHoneypot] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isEmailDropdownOpen, setIsEmailDropdownOpen] = useState(false);
   const [copied, setCopied] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const mountedAtRef = useRef<number>(Date.now());
 
   useEffect(() => {
     setCurrentUrl(window.location.href);
+    mountedAtRef.current = Date.now();
     
     // Close dropdown when clicking outside
     const handleClickOutside = (event: MouseEvent) => {
@@ -29,6 +35,29 @@ export default function ContactSection() {
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
     setIsEmailDropdownOpen(false);
+  };
+
+  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+
+    // 1. Block bots via honeypot or sub-second automated submission
+    if (honeypot || Date.now() - mountedAtRef.current < 1200) {
+      return;
+    }
+
+    // 2. Validate email against disposable / burner domains & hex aliases
+    setIsSubmitting(true);
+    const check = await validateEmail(email);
+    setIsSubmitting(false);
+
+    if (!check.valid) {
+      setEmailError(check.reason || 'Please enter a valid, non-disposable email address.');
+      return;
+    }
+
+    setEmailError('');
+    form.submit();
   };
 
   return (
@@ -111,6 +140,7 @@ export default function ContactSection() {
             className="space-y-6" 
             method="POST" 
             action="https://formsubmit.co/marwanmagdy680@gmail.com"
+            onSubmit={handleFormSubmit}
           >
             {/* Hidden Configuration Fields */}
             <input type="hidden" name="_next" value={currentUrl} />
@@ -119,6 +149,16 @@ export default function ContactSection() {
             <input type="hidden" name="_replyto" value={email} />
             <input type="hidden" name="_subject" value={subject ? `Riadi Contact: ${subject}` : "New message from Riadi website!"} />
             <input type="hidden" name="_timezone" value="Africa/Cairo" />
+            {/* Anti-bot honeypot field */}
+            <input
+              type="text"
+              name="_honey"
+              value={honeypot}
+              onChange={(e) => setHoneypot(e.target.value)}
+              style={{ display: 'none' }}
+              tabIndex={-1}
+              autoComplete="off"
+            />
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
@@ -152,11 +192,32 @@ export default function ContactSection() {
                 type="email" 
                 name="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-[#0A0E0C] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors" 
+                onChange={(e) => {
+                  const val = e.target.value;
+                  setEmail(val);
+                  if (emailError) {
+                    const res = validateEmailSync(val);
+                    if (res.valid) setEmailError('');
+                  }
+                }}
+                onBlur={() => {
+                  if (email.trim()) {
+                    const res = validateEmailSync(email);
+                    setEmailError(res.valid ? '' : (res.reason || ''));
+                  }
+                }}
+                className={`w-full bg-[#0A0E0C] border rounded-xl px-4 py-3 text-white focus:outline-none transition-colors ${
+                  emailError ? 'border-red-500 focus:border-red-500' : 'border-white/10 focus:border-primary'
+                }`}
                 placeholder="ahmed@example.com" 
                 required
               />
+              {emailError && (
+                <p className="text-xs text-red-400 flex items-center gap-1.5 pt-1">
+                  <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                  <span>{emailError}</span>
+                </p>
+              )}
             </div>
             <div className="space-y-2">
               <label className="text-sm font-medium text-white/70">Subject</label>
@@ -182,9 +243,10 @@ export default function ContactSection() {
             </div>
             <button 
               type="submit"
-              className="w-full py-4 bg-primary hover:bg-primary/90 text-white rounded-xl font-bold tracking-wide transition-colors flex items-center justify-center gap-2 shadow-lg shadow-primary/20"
+              disabled={isSubmitting}
+              className="w-full py-4 bg-primary hover:bg-primary/90 disabled:opacity-60 text-white rounded-xl font-bold tracking-wide transition-colors flex items-center justify-center gap-2 shadow-lg shadow-primary/20"
             >
-              <span>Send Message</span>
+              <span>{isSubmitting ? 'Verifying...' : 'Send Message'}</span>
               <Send className="w-4 h-4" />
             </button>
           </form>

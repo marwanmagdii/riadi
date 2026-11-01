@@ -26,6 +26,10 @@ Riadi (رياضي) is Egypt's #1 sports booking application.
 - Alexandria: https://riadiapp.com/alexandria
 - Giza: https://riadiapp.com/giza
 
+## Download the App
+- iOS (App Store): https://apps.apple.com/eg/app/riadi/id6770214844
+- Android (Google Play): https://play.google.com/store/apps/details?id=com.riadi
+
 ## Contact
 - Website: https://riadiapp.com
 - Email: contact@riadiapp.com

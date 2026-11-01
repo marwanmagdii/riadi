@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { Send, ArrowLeft } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Send, ArrowLeft, AlertCircle } from 'lucide-react';
+import { validateEmail, validateEmailSync } from '../lib/email-validator';
 import { Link } from 'react-router-dom';
 import { Logo } from '../components/ui/logo';
 
@@ -41,6 +42,9 @@ export default function RegisterField() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const submittingRef = useRef(false);
   const [numberOfClubs, setNumberOfClubs] = useState('');
   const [phone, setPhone] = useState('');
   const [details, setDetails] = useState('');
@@ -52,7 +56,18 @@ export default function RegisterField() {
   const handleRegisterSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); 
     
+    if (submittingRef.current) return;
+    submittingRef.current = true;
+    setIsSubmitting(true);
     const form = e.currentTarget;
+    const check = await validateEmail(email);
+    if (!check.valid) {
+      setEmailError(check.reason || 'Please enter a valid, non-disposable email address.');
+      submittingRef.current = false;
+      setIsSubmitting(false);
+      return;
+    }
+    setEmailError('');
     const formData = new FormData(form);
     
     const searchParams = new URLSearchParams();
@@ -88,6 +103,9 @@ export default function RegisterField() {
     } catch (error) {
       console.error("Form submission error:", error);
       alert("Something went wrong. Please try again.");
+    } finally {
+      submittingRef.current = false;
+      setIsSubmitting(false);
     }
   };
 
@@ -184,11 +202,27 @@ export default function RegisterField() {
                     type="email" 
                     name="email"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      setEmail(val);
+                      if (emailError && validateEmailSync(val).valid) setEmailError('');
+                    }}
+                    onBlur={() => {
+                      if (email.trim()) {
+                        const res = validateEmailSync(email);
+                        setEmailError(res.valid ? '' : (res.reason || ''));
+                      }
+                    }}
                     className="w-full bg-[#0A0E0C] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors" 
                     placeholder="ahmed@example.com" 
                     required
                   />
+                  {emailError && (
+                    <p className="text-xs text-red-400 flex items-center gap-1.5 pt-1">
+                      <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                      <span>{emailError}</span>
+                    </p>
+                  )}
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white/70">Phone Number</label>
